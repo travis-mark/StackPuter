@@ -7,10 +7,6 @@
 
 import SwiftUI
 
-func eval(_ forms: String) -> [String] {
-    return forms.split(separator: " ").map { $0.description }
-}
-
 struct ContentView: View {
     @State var form: String = ""
     var body: some View {

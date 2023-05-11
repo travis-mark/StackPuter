@@ -11,7 +11,18 @@
 		1F5199072A0B34A700A7888E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5199062A0B34A700A7888E /* ContentView.swift */; };
 		1F5199092A0B34A700A7888E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F5199082A0B34A700A7888E /* Assets.xcassets */; };
 		1F51990C2A0B34A700A7888E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F51990B2A0B34A700A7888E /* Preview Assets.xcassets */; };
+		1F5199292A0C7C6000A7888E /* StackPuterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5199282A0C7C6000A7888E /* StackPuterTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1F51992A2A0C7C6000A7888E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F5198F92A0B34A700A7888E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F5199002A0B34A700A7888E;
+			remoteInfo = StackPuter;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1F5199012A0B34A700A7888E /* StackPuter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StackPuter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -19,10 +30,19 @@
 		1F5199062A0B34A700A7888E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1F5199082A0B34A700A7888E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F51990B2A0B34A700A7888E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1F5199262A0C7C6000A7888E /* StackPuterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StackPuterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F5199282A0C7C6000A7888E /* StackPuterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackPuterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		1F5198FE2A0B34A700A7888E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F5199232A0C7C6000A7888E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -36,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				1F5199032A0B34A700A7888E /* StackPuter */,
+				1F5199272A0C7C6000A7888E /* StackPuterTests */,
 				1F5199022A0B34A700A7888E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -44,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				1F5199012A0B34A700A7888E /* StackPuter.app */,
+				1F5199262A0C7C6000A7888E /* StackPuterTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -67,6 +89,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		1F5199272A0C7C6000A7888E /* StackPuterTests */ = {
+			isa = PBXGroup;
+			children = (
+				1F5199282A0C7C6000A7888E /* StackPuterTests.swift */,
+			);
+			path = StackPuterTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -87,6 +117,24 @@
 			productReference = 1F5199012A0B34A700A7888E /* StackPuter.app */;
 			productType = "com.apple.product-type.application";
 		};
+		1F5199252A0C7C6000A7888E /* StackPuterTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F51992C2A0C7C6000A7888E /* Build configuration list for PBXNativeTarget "StackPuterTests" */;
+			buildPhases = (
+				1F5199222A0C7C6000A7888E /* Sources */,
+				1F5199232A0C7C6000A7888E /* Frameworks */,
+				1F5199242A0C7C6000A7888E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1F51992B2A0C7C6000A7888E /* PBXTargetDependency */,
+			);
+			name = StackPuterTests;
+			productName = StackPuterTests;
+			productReference = 1F5199262A0C7C6000A7888E /* StackPuterTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -99,6 +147,10 @@
 				TargetAttributes = {
 					1F5199002A0B34A700A7888E = {
 						CreatedOnToolsVersion = 14.3;
+					};
+					1F5199252A0C7C6000A7888E = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = 1F5199002A0B34A700A7888E;
 					};
 				};
 			};
@@ -116,6 +168,7 @@
 			projectRoot = "";
 			targets = (
 				1F5199002A0B34A700A7888E /* StackPuter */,
+				1F5199252A0C7C6000A7888E /* StackPuterTests */,
 			);
 		};
 /* End PBXProject section */
@@ -127,6 +180,13 @@
 			files = (
 				1F51990C2A0B34A700A7888E /* Preview Assets.xcassets in Resources */,
 				1F5199092A0B34A700A7888E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F5199242A0C7C6000A7888E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,7 +202,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1F5199222A0C7C6000A7888E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F5199292A0C7C6000A7888E /* StackPuterTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1F51992B2A0C7C6000A7888E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1F5199002A0B34A700A7888E /* StackPuter */;
+			targetProxy = 1F51992A2A0C7C6000A7888E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1F51990D2A0B34A700A7888E /* Debug */ = {
@@ -317,6 +393,42 @@
 			};
 			name = Release;
 		};
+		1F51992D2A0C7C6000A7888E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PGUSZZ68XF;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tl.StackPuterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StackPuter.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/StackPuter";
+			};
+			name = Debug;
+		};
+		1F51992E2A0C7C6000A7888E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PGUSZZ68XF;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tl.StackPuterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StackPuter.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/StackPuter";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -334,6 +446,15 @@
 			buildConfigurations = (
 				1F5199102A0B34A700A7888E /* Debug */,
 				1F5199112A0B34A700A7888E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1F51992C2A0C7C6000A7888E /* Build configuration list for PBXNativeTarget "StackPuterTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F51992D2A0C7C6000A7888E /* Debug */,
+				1F51992E2A0C7C6000A7888E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

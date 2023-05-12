@@ -19,6 +19,21 @@ class Stack {
     }
 }
 
+let builtins = ["+", "-", "*", "/"]
+func apply(_ operation: String, _ num1: Int, _ num2: Int) -> Int {
+    switch operation {
+    case "+":
+        return num1 + num2
+    case "-":
+        return num1 - num2
+    case "*":
+        return num1 * num2
+    case "/":
+        return num1 / num2
+    default:
+        return 0
+    }
+}
 
 func eval(_ forms: String) -> [String] {
     let stack = Stack()
@@ -27,10 +42,10 @@ func eval(_ forms: String) -> [String] {
     while !scanner.isAtEnd, let token = scanner.scanUpToCharacters(from: .whitespaces) {
         if (token.range(of: #"^\d+$"#, options: .regularExpression) != nil) {
             stack.push(token)
-        } else if token == "+" {
+        } else if builtins.contains(token) {
             let lhs = Int(stack.pop())!
             let rhs = Int(stack.pop())!
-            stack.push(String(lhs + rhs))
+            stack.push(String(apply(token, lhs, rhs)))
         }
     }
     return stack.stack

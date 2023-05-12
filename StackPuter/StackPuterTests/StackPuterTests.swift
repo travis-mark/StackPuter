@@ -13,5 +13,8 @@ final class StackPuterTests: XCTestCase {
         XCTAssert(eval("22") == ["22"])
         XCTAssert(eval("1 2 3 4") == ["1", "2", "3", "4"])
         XCTAssert(eval("1 2 +") == ["3"])
+        XCTAssert(eval("1 2 -") == ["1"])
+        XCTAssert(eval("5 5 *") == ["25"])
+        XCTAssert(eval("2 8 /") == ["4"])
     }
 }

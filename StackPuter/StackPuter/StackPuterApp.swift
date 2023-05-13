@@ -19,7 +19,16 @@ class Stack {
     }
 }
 
-let builtins = ["+", "-", "*", "/"]
+let monadic = ["abs"]
+func apply(_ operation: String, _ num: Int) -> Int {
+    switch operation {
+    case "abs":
+        return abs(num)
+    default:
+        return 0
+    }
+}
+let dyadic = ["+", "-", "*", "/"]
 func apply(_ operation: String, _ num1: Int, _ num2: Int) -> Int {
     switch operation {
     case "+":
@@ -40,9 +49,12 @@ func eval(_ forms: String) -> [String] {
     let scanner = Scanner(string: forms)
     
     while !scanner.isAtEnd, let token = scanner.scanUpToCharacters(from: .whitespaces) {
-        if (token.range(of: #"^\d+$"#, options: .regularExpression) != nil) {
+        if (token.range(of: #"^-?\d+$"#, options: .regularExpression) != nil) {
             stack.push(token)
-        } else if builtins.contains(token) {
+        } else if monadic.contains(token) {
+            let val = Int(stack.pop())!
+            stack.push(String(apply(token, val)))
+        } else if dyadic.contains(token) {
             let lhs = Int(stack.pop())!
             let rhs = Int(stack.pop())!
             stack.push(String(apply(token, lhs, rhs)))

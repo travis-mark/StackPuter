@@ -16,5 +16,6 @@ final class StackPuterTests: XCTestCase {
         XCTAssert(eval("1 2 -") == ["1"])
         XCTAssert(eval("5 5 *") == ["25"])
         XCTAssert(eval("2 8 /") == ["4"])
+        XCTAssert(eval("-2 abs") == ["2"])
     }
 }

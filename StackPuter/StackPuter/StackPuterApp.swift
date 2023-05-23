@@ -19,11 +19,13 @@ class Stack {
     }
 }
 
-let monadic = ["abs"]
+let monadic = ["abs", "sqrt"]
 func apply(_ operation: String, _ num: Int) -> Int {
     switch operation {
     case "abs":
         return abs(num)
+    case "sqrt":
+        return Int(sqrt(Double(num)))
     default:
         return 0
     }

@@ -10,9 +10,9 @@ struct ContentView: View {
             TextField("Type formula here", text: $form)
                 .disableAutocorrection(true)
             Spacer()
-            ForEach(eval(form), id: \.self) { item in
+            ForEach(eval(form), id: \.self) { value in
                 HStack {
-                    Text(String(item))
+                    Text(value == floor(value) ? "\(Int(value))" : "\(value)")
                     Spacer()
                 }
             }
@@ -20,7 +20,6 @@ struct ContentView: View {
         .padding()
     }
 }
-
 
 @main struct StackPuterApp: App {
     var body: some Scene {

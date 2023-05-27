@@ -15,17 +15,11 @@ struct ContentView: View {
             Spacer()
             ForEach(eval(form), id: \.self) { item in
                 HStack {
-                    Text(item)
+                    Text(String(item))
                     Spacer()
                 }
             }
         }
         .padding()
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }

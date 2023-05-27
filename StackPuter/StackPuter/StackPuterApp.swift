@@ -8,13 +8,13 @@
 import SwiftUI
 
 class Stack {
-    var stack = [String]()
+    var stack = [Double]()
     
-    func pop() -> String {
+    func pop() -> Double {
         return stack.popLast()!
     }
     
-    func push(_ s: String) {
+    func push(_ s: Double) {
         stack.append(s)
     }
 }
@@ -45,22 +45,20 @@ let dyadic: [String: (Double, Double) -> Double]  = [
     "/": { $0 / $1 },
 ]
 
-func eval(_ forms: String) -> [String] {
+func eval(_ forms: String) -> [Double] {
     let stack = Stack()
     let scanner = Scanner(string: forms)
     
     while !scanner.isAtEnd, let token = scanner.scanUpToCharacters(from: .whitespaces) {
         if (token.range(of: #"^-?\d+(.\d+)?$"#, options: .regularExpression) != nil) {
-            stack.push(token)
+            stack.push(Double(token)!)
         } else if let monad = monadic[token] {
-            let val = Double(stack.pop())!
-            stack.push(String(monad(val)))
+            let val = stack.pop()
+            stack.push(monad(val))
         } else if let dyad = dyadic[token] {
-            let lhs = Double(stack.pop())!
-            let rhs = Double(stack.pop())!
-            stack.push(String(dyad(lhs, rhs)))
-        } else {
-            assert(false, "Unrecognized symbol: \(token)")
+            let lhs = stack.pop()
+            let rhs = stack.pop()
+            stack.push(dyad(lhs, rhs))
         }
     }
     return stack.stack

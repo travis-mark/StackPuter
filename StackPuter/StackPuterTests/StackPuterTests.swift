@@ -18,8 +18,18 @@ final class StackPuterTests: XCTestCase {
         XCTAssert(eval("1 2 +") == [3])
         XCTAssert(eval("1 2 -") == [1])
         XCTAssert(eval("5 5 *") == [25])
-        XCTAssert(eval("2 8 /") == [4])
+        XCTAssert(eval("8 2 /") == [4])
         XCTAssert(eval("-2 abs") == [2])
         XCTAssert(eval("4 sqrt") == [2])
+    }
+    
+    func testTrig() throws {
+        XCTAssert(eval("2 PI DEG * *") == [360])
+        XCTAssert(eval("PI 2 / sin") == [1])
+        // TODO: Fix epsilon in tests
+//        XCTAssert(eval("PI 2 / cos") == [0])
+//        XCTAssert(eval("PI 4 / tan") == [1])
+        XCTAssert(eval("0 asin") == [0])
+        XCTAssert(eval("0 acos") == eval("PI 2 /"))
     }
 }

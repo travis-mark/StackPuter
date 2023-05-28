@@ -3,11 +3,19 @@
 
 import Foundation
 
+enum StackError: Error {
+    case underflow
+}
+
 class Stack {
     var stack = [Double]()
     
-    func pop() -> Double {
-        return stack.popLast()!
+    func pop() throws -> Double {
+        if let top = stack.popLast() {
+            return top
+        } else {
+            throw StackError.underflow
+        }
     }
     
     func push(_ s: Double) {
@@ -37,6 +45,7 @@ let monadic: [String: (Double) -> Double] = [
     "log10" : { log10($0) },
     "int" : { floor($0) },
 ]
+
 let dyadic: [String: (Double, Double) -> Double]  = [
     "+": { $0 + $1 },
     "-": { $0 - $1 },
@@ -49,17 +58,23 @@ func eval(_ forms: String) -> [Double] {
     let stack = Stack()
     let scanner = Scanner(string: forms)
     
-    while !scanner.isAtEnd, let token = scanner.scanUpToCharacters(from: .whitespaces) {
-        if (token.range(of: #"^-?\d+(.\d+)?$"#, options: .regularExpression) != nil) {
-            stack.push(Double(token)!)
-        } else if let monad = monadic[token] {
-            let val = stack.pop()
-            stack.push(monad(val))
-        } else if let dyad = dyadic[token] {
-            let lhs = stack.pop()
-            let rhs = stack.pop()
-            stack.push(dyad(lhs, rhs))
+    do {
+        while !scanner.isAtEnd, let token = scanner.scanUpToCharacters(from: .whitespaces) {
+            if (token.range(of: #"^-?\d+(.\d+)?$"#, options: .regularExpression) != nil) {
+                stack.push(Double(token)!)
+            } else if let constant = constants[token] {
+                stack.push(constant)
+            } else if let monad = monadic[token] {
+                let val = try stack.pop()
+                stack.push(monad(val))
+            } else if let dyad = dyadic[token] {
+                let rhs = try stack.pop()
+                let lhs = try stack.pop()
+                stack.push(dyad(lhs, rhs))
+            }
         }
+    } catch {
+        // TODO: Error handler
     }
     return stack.stack
 }

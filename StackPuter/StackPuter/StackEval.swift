@@ -32,26 +32,34 @@ let constants: [String: Double] = [
 ]
 
 let monadic: [String: (Double) -> Double] = [
-    "abs" : { abs($0) },
-    "sqrt" : { sqrt($0) },
-    "sin" : { sin($0) },
-    "cos" : { cos($0) },
-    "tan" : { tan($0) },
-    "asin" : { asin($0) },
-    "acos" : { acos($0) },
-    "atan" : { atan($0) },
-    "exp" : { exp($0) },
-    "log" : { log($0) },
-    "log10" : { log10($0) },
-    "int" : { floor($0) },
+    "abs" : abs,
+    "sqrt" : sqrt,
+    "sin" : sin,
+    "cos" : cos,
+    "tan" : tan,
+    "asin" : asin,
+    "acos" : acos,
+    "atan" : atan,
+    "exp" : exp,
+    "log" : log,
+    "log10" : log10,
+    "int" : floor,
+    "~" : { Double(~(Int($0))) },
+    "signum" : { $0 == 0 ? 0 : $0 > 0 ? 1 : -1 }
 ]
 
 let dyadic: [String: (Double, Double) -> Double]  = [
-    "+": { $0 + $1 },
-    "-": { $0 - $1 },
-    "*": { $0 * $1 },
-    "/": { $0 / $1 },
-    
+    "+" : { $0 + $1 },
+    "-" : { $0 - $1 },
+    "*" : { $0 * $1 },
+    "/" : { $0 / $1 },
+    "%" : { $0.truncatingRemainder(dividingBy: $1) },
+    "&" : { Double(Int($0) & Int($1)) },
+    "|" : { Double(Int($0) | Int($1)) },
+    "^" : { Double(Int($0) ^ Int($1)) },
+    "<<" : { Double(Int($0) << Int($1)) },
+    ">>" : { Double(Int($0) >> Int($1)) },
+    "isMultiple" : { Int($0).isMultiple(of: Int($1)) ? 1 : 0  }
 ]
 
 func eval(_ forms: String) -> [Double] {

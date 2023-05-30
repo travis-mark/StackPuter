@@ -62,12 +62,11 @@ let dyadic: [String: (Double, Double) -> Double]  = [
     "isMultiple" : { Int($0).isMultiple(of: Int($1)) ? 1 : 0  }
 ]
 
-func eval(_ forms: String) -> [Double] {
+func eval(_ forms: String) -> String {
     let stack = Stack()
     let scanner = Scanner(string: forms)
-    
-    do {
-        while !scanner.isAtEnd, let token = scanner.scanUpToCharacters(from: .whitespaces) {
+    while !scanner.isAtEnd, let token = scanner.scanUpToCharacters(from: .whitespaces) {
+        do {
             if (token.range(of: #"^-?\d+(.\d+)?$"#, options: .regularExpression) != nil) {
                 stack.push(Double(token)!)
             } else if let constant = constants[token] {
@@ -80,9 +79,14 @@ func eval(_ forms: String) -> [Double] {
                 let lhs = try stack.pop()
                 stack.push(dyad(lhs, rhs))
             }
+        } catch {
+            if error as! StackError == StackError.underflow {
+                return "Attempted to pop from empty stack while resolving symbol: \(token)"
+            } else {
+                return "Error: \(error.localizedDescription)"
+            }
+            
         }
-    } catch {
-        // TODO: Error handler
     }
-    return stack.stack
+    return stack.stack.map({ $0 == floor($0) ? String(Int($0)) : String($0) }).joined(separator: " ")
 }
